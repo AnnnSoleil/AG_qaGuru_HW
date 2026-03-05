@@ -1,4 +1,4 @@
-package guru.qa;
+package examples;
 
 public class Main {
 
