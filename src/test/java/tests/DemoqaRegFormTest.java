@@ -16,19 +16,20 @@ public class DemoqaRegFormTest {
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
-        Configuration.holdBrowserOpen = true;
+        Configuration.holdBrowserOpen = false;
     }
 
     @Test
     void successfillFormTest() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
-//        executeJavaScript("$('#fixedban').remove()"); //выполняем скрипт на стороне браузера (у меня отсутствовал, закомментирован для истории)
-//        executeJavaScript("$('#footer  ').remove()");
+        executeJavaScript("""
+document.getElementById('fixedban')?.remove();
+document.querySelector('footer')?.remove();
+""");
         $("#firstName").setValue("Ivan");
         $("#lastName").setValue("Fedorov");
         $("#userEmail").setValue("fedorov@bk.ru");
-//        $("#gender-radio-1").parent().click();
         $("#genterWrapper").$(byText("Female")).click();
         $("#userNumber").setValue("1234567890");
         $("#dateOfBirthInput").click();
@@ -38,7 +39,6 @@ public class DemoqaRegFormTest {
         $("#subjectsInput").setValue("Maths").pressEnter();
         $("#hobbiesWrapper").$(byText("Music")).click();
         $("#uploadPicture").uploadFromClasspath("img/IMG_5828.JPG");
-//        $("#Select picture").uploadFile(new File("src/test/resources/img/IMG_5828.JPG");
         $("#currentAddress").setValue("Novaya street 100");
         $("#state").click();
         $("#stateCity-wrapper").$(byText("Haryana")).click();
@@ -48,11 +48,18 @@ public class DemoqaRegFormTest {
 
         $(".modal-dialog").should(appear);
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text("Ivan"), text("Fedorov"), text("fedorov@bk.ru"),
-                text("Female"), text("1234567890"), text("02 July,1983"), text("Maths"), text("Music"),
-                text("IMG_5828.JPG"), text("Novaya street 100"), text("Haryana"), text("Karnal"));
-
-
+        $(".table-responsive").shouldHave(text("Ivan"));
+        $(".table-responsive").shouldHave(text("Fedorov"));
+        $(".table-responsive").shouldHave(text("fedorov@bk.ru"));
+        $(".table-responsive").shouldHave(text("Female"));
+        $(".table-responsive").shouldHave(text("1234567890"));
+        $(".table-responsive").shouldHave(text("02 July,1983"));
+        $(".table-responsive").shouldHave(text("Maths"));
+        $(".table-responsive").shouldHave(text("Music"));
+        $(".table-responsive").shouldHave(text("IMG_5828.JPG"));
+        $(".table-responsive").shouldHave(text("Novaya street 100"));
+        $(".table-responsive").shouldHave(text("Haryana"));
+        $(".table-responsive").shouldHave(text("Karnal"));
     }
 }
 
