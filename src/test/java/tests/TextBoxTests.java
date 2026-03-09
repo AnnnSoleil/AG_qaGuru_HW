@@ -7,6 +7,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static tests.testdata.testData.*;
 
+
 public class TextBoxTests extends TestBase {
 
     @Test
@@ -14,15 +15,15 @@ public class TextBoxTests extends TestBase {
 
         open("/text-box");
         $("[id=userName]").setValue(userName);
-        $("[id=userEmail]").setValue(userEmail);
-        $("[id=currentAddress]").setValue(currentAddress);
-        $("[id=permanentAddress]").setValue(permanentAddress);
+        $("[id=userEmail]").setValue(usEmail);
+        $("[id=currentAddress]").setValue(curAddress);
+        $("[id=permanentAddress]").setValue(permAddress);
         $("[id=submit]").click();
 
         $("[id=output] [id=name]").shouldHave(text(userName));
-        $("[id=output] [id=email]").shouldHave(text(userEmail));
-        $("[id=output] [id=currentAddress]").shouldHave(text(currentAddress));
-        $("[id=output] [id=permanentAddress]").shouldHave(text(permanentAddress));
+        $("[id=output] [id=email]").shouldHave(text(usEmail));
+        $("[id=output] [id=currentAddress]").shouldHave(text(curAddress));
+        $("[id=output] [id=permanentAddress]").shouldHave(text(permAddress));
         }
 
 
@@ -31,10 +32,10 @@ public class TextBoxTests extends TestBase {
 
         open("/text-box");
         $("[id=userName]").setValue(userName);
-        $("[id=userEmail]").setValue(userEmail);
+        $("[id=userEmail]").setValue(usEmail);
         $("[id=submit]").click();
 
         $("[id=output] [id=name]").shouldHave(text(userName));
-        $("[id=output] [id=email]").shouldHave(text(userEmail));
+        $("[id=output] [id=email]").shouldHave(text(usEmail));
         }
     }
