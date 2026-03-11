@@ -22,7 +22,7 @@ public class TextBoxTests extends TestBase {
 
         $("[id=output] [id=name]").shouldHave(text(userName));
         $("[id=output] [id=email]").shouldHave(text(usEmail));
-        $("[id=output] [id=currentAddress]").shouldHave(text(curAddress));
+        $("[id=output] [id=currentAddress]").shouldHave(text(curAddress));ъпше
         $("[id=output] [id=permanentAddress]").shouldHave(text(permAddress));
         }
 
