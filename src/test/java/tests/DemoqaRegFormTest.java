@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
-import static tests.testdata.testData.*;
+import static testdata.testData.*;
 
 public class DemoqaRegFormTest {
     @BeforeAll
