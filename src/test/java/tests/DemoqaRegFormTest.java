@@ -13,20 +13,19 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class DemoqaRegFormTest {
     @BeforeAll
-    static void beforeAll() {
+    static void setupSelenideConfig() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
-        Configuration.holdBrowserOpen = false;
     }
 
     @Test
-    void successfillFormTest() {
+    void successFillFormTest() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         executeJavaScript("""
-document.getElementById('fixedban')?.remove();
-document.querySelector('footer')?.remove();
-""");
+                document.getElementById('fixedban')?.remove();
+                document.querySelector('footer')?.remove();
+                """);
         $("#firstName").setValue("Ivan");
         $("#lastName").setValue("Fedorov");
         $("#userEmail").setValue("fedorov@bk.ru");
