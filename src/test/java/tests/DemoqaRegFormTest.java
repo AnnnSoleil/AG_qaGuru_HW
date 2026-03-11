@@ -14,20 +14,19 @@ import static tests.testdata.testData.*;
 
 public class DemoqaRegFormTest {
     @BeforeAll
-    static void beforeAll() {
+    static void setupSelenideConfig() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
-        Configuration.holdBrowserOpen = false;
     }
 
     @Test
-    void successfillFormTest() {
+    void successFillFormTest() {
         open(formUrl);
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         executeJavaScript("""
-document.getElementById('fixedban')?.remove();
-document.querySelector('footer')?.remove();
-""");
+                document.getElementById('fixedban')?.remove();
+                document.querySelector('footer')?.remove();
+                """);
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
         $("#userEmail").setValue(userEmail);
