@@ -10,6 +10,7 @@ import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
+import static testdata.testData.*;
 
 public class DemoqaRegFormTest {
     @BeforeAll
@@ -20,45 +21,45 @@ public class DemoqaRegFormTest {
 
     @Test
     void successFillFormTest() {
-        open("/automation-practice-form");
+        open(formUrl);
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         executeJavaScript("""
                 document.getElementById('fixedban')?.remove();
                 document.querySelector('footer')?.remove();
                 """);
-        $("#firstName").setValue("Ivan");
-        $("#lastName").setValue("Fedorov");
-        $("#userEmail").setValue("fedorov@bk.ru");
-        $("#genterWrapper").$(byText("Female")).click();
-        $("#userNumber").setValue("1234567890");
+        $("#firstName").setValue(firstName);
+        $("#lastName").setValue(lastName);
+        $("#userEmail").setValue(userEmail);
+        $("#genterWrapper").$(byText(gender)).click();
+        $("#userNumber").setValue(userNumber);
         $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption("July");
-        $(".react-datepicker__year-select").selectOption("1983");
-        $(".react-datepicker__day--002:not(react-datepicker__day--outside-month)").click();
-        $("#subjectsInput").setValue("Maths").pressEnter();
-        $("#hobbiesWrapper").$(byText("Music")).click();
-        $("#uploadPicture").uploadFromClasspath("img/IMG_5828.JPG");
-        $("#currentAddress").setValue("Novaya street 100");
+        $(".react-datepicker__month-select").selectOption(month);
+        $(".react-datepicker__year-select").selectOption(year);
+        $(".react-datepicker__day--" + dayForSelector + ":not(react-datepicker__day--outside-month)").click();
+        $("#subjectsInput").setValue(subject).pressEnter();
+        $("#hobbiesWrapper").$(byText(hobby)).click();
+        $("#uploadPicture").uploadFromClasspath(imgPath + img);
+        $("#currentAddress").setValue(currentAddress);
         $("#state").click();
-        $("#stateCity-wrapper").$(byText("Haryana")).click();
+        $("#stateCity-wrapper").$(byText(state)).click();
         $("#city").click();
-        $("#stateCity-wrapper").$(byText("Karnal")).click();
+        $("#stateCity-wrapper").$(byText(stateCity)).click();
         $(byId("submit")).click();
 
         $(".modal-dialog").should(appear);
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text("Ivan"));
-        $(".table-responsive").shouldHave(text("Fedorov"));
-        $(".table-responsive").shouldHave(text("fedorov@bk.ru"));
-        $(".table-responsive").shouldHave(text("Female"));
-        $(".table-responsive").shouldHave(text("1234567890"));
-        $(".table-responsive").shouldHave(text("02 July,1983"));
-        $(".table-responsive").shouldHave(text("Maths"));
-        $(".table-responsive").shouldHave(text("Music"));
-        $(".table-responsive").shouldHave(text("IMG_5828.JPG"));
-        $(".table-responsive").shouldHave(text("Novaya street 100"));
-        $(".table-responsive").shouldHave(text("Haryana"));
-        $(".table-responsive").shouldHave(text("Karnal"));
+        $("#example-modal-sizes-title-lg").shouldHave(text(modalWinTest));
+        $(".table-responsive").shouldHave(text(firstName));
+        $(".table-responsive").shouldHave(text(lastName));
+        $(".table-responsive").shouldHave(text(userEmail));
+        $(".table-responsive").shouldHave(text(gender));
+        $(".table-responsive").shouldHave(text(userNumber));
+        $(".table-responsive").shouldHave(text(expectedDate));
+        $(".table-responsive").shouldHave(text(subject));
+        $(".table-responsive").shouldHave(text(hobby));
+        $(".table-responsive").shouldHave(text(img));
+        $(".table-responsive").shouldHave(text(currentAddress));
+        $(".table-responsive").shouldHave(text(state));
+        $(".table-responsive").shouldHave(text(stateCity));
     }
 }
 
