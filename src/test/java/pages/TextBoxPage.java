@@ -6,16 +6,16 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static testdata.testData.userName;
+
 
 public class TextBoxPage {
     //Elements
-    private SelenideElement userNameInput = $("#userName");
-    private SelenideElement usEmailInput = $("#userEmail");
-    private SelenideElement curAddressInput = $("#currentAddress");
-    private SelenideElement permAddressInput = $("#permanentAddress");
-    private SelenideElement submitButton = $("#submit");
-    private SelenideElement outputResults = $("#output");
+    private final SelenideElement userNameInput = $("#userName");
+    private final SelenideElement usEmailInput = $("#userEmail");
+    private final SelenideElement curAddressInput = $("#currentAddress");
+    private final SelenideElement permAddressInput = $("#permanentAddress");
+    private final SelenideElement submitButton = $("#submit");
+    private final SelenideElement outputResults = $("#output");
 
     //Actions
     public TextBoxPage openPage() {
@@ -59,5 +59,5 @@ public class TextBoxPage {
 
         return this;
     }
- //
+    //
 }

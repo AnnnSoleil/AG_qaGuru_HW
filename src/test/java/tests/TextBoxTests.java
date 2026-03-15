@@ -2,10 +2,6 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
-
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 import static testdata.testData.*;
 
 
@@ -25,7 +21,7 @@ public class TextBoxTests extends TestBase {
                 .checkField("email", usEmail)
                 .checkField("currentAddress", curAddress)
                 .checkField("permanentAddress", permAddress);
-        }
+    }
 
 
     @Test
@@ -37,5 +33,5 @@ public class TextBoxTests extends TestBase {
                 .submitForm()
                 .checkField("name", userName)
                 .checkField("email", usEmail);
-        }
     }
+}

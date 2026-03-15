@@ -13,6 +13,7 @@ public class DemoqaRegFormTest extends TestBase {
     void successFillFormTest() {
         demoqaRegFormTestPage
                 .openPage()
+                .banerRemover()
                 .formHavText("Student Registration Form")
                 .typeFirstName(firstName)
                 .typeLastName(lastName)
@@ -30,17 +31,15 @@ public class DemoqaRegFormTest extends TestBase {
         demoqaRegFormTestPage
                 .checkFormField("Student Name", firstName + " " + lastName)
                 .checkFormField("Student Email", userEmail)
-                .checkFormField("Student Name", gender)
-                .checkFormField("Student Name", userNumber)
-                .checkFormField("Student Name", expectedDate)
-                .checkFormField("Student Name", subject)
-                .checkFormField("Student Name", hobby)
-                .checkFormField("Student Name", img)
-                .checkFormField("Student Name", currentAddress)
-                .checkFormField("Student Name", state)
-                .checkFormField("Student Name", stateCity);
+                .checkFormField("Gender", gender)
+                .checkFormField("Mobile", userNumber)
+                .checkFormField("Date of Birth", expectedDate)
+                .checkFormField("Subjects", subject)
+                .checkFormField("Hobbies", hobby)
+                .checkFormField("Picture", img)
+                .checkFormField("Address", currentAddress)
+                .checkFormField("State and City", state + " " + stateCity);
 
 
     }
 }
-
