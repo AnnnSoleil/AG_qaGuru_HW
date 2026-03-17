@@ -33,10 +33,7 @@ public class DemoqaRegFormTestPage {
     //Actions
     public DemoqaRegFormTestPage openPage() {
         open(formUrl);
-        executeJavaScript("""
-                document.getElementById('fixedban')?.remove();
-                document.querySelector('footer')?.remove();
-                """);
+
         return this;
     }
 
