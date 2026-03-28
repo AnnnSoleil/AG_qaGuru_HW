@@ -1,41 +1,67 @@
 package tests;
 
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
+import pages.TextBoxPage;
+
+import java.util.Locale;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 import static testdata.testData.*;
+//import static testdata.testData.userName;
 
 
 public class TextBoxTests extends TestBase {
+    TextBoxPage textBoxPage = new TextBoxPage();
+
+//    @Test
+//    void successfulFillFormTest() {
+//
+//        textBoxPage.openPage()
+//                .typeUserName(userName)
+//                .typeUsEmail(usEmail)
+//                .typeCurAddress(curAddress)
+//                .typePermAddress(permAddress)
+//                .submitForm()
+//                .checkField("name", userName)
+//                .checkField("email", usEmail)
+//                .checkField("currentAddress", curAddress)
+//                .checkField("permanentAddress", permAddress);
+//        }
+//
+//
+//    @Test
+//    void successfulFillFormWithoutAddressTest() {
+//
+//        textBoxPage.openPage()
+//                .typeUserName(userName)
+//                .typeUsEmail(usEmail)
+//                .submitForm()
+//                .checkField("name", userName)
+//                .checkField("email", usEmail);
+//        }
 
     @Test
-    void successfulFillFormTest() {
-
-        open("/text-box");
-        $("[id=userName]").setValue(userName);
-        $("[id=userEmail]").setValue(usEmail);
-        $("[id=currentAddress]").setValue(curAddress);
-        $("[id=permanentAddress]").setValue(permAddress);
-        $("[id=submit]").click();
-
-        $("[id=output] [id=name]").shouldHave(text(userName));
-        $("[id=output] [id=email]").shouldHave(text(usEmail));
-        $("[id=output] [id=currentAddress]").shouldHave(text(curAddress));
-        $("[id=output] [id=permanentAddress]").shouldHave(text(permAddress));
-        }
+    void successfulFillFormTest_with_faker() {
+        Faker faker = new Faker();
+        Faker fakerRu = new Faker(new Locale("ru"));
+        String userName = fakerRu.name().fullName();
+        String usEmail = faker.internet().emailAddress();
+        String curAddress = fakerRu.address().fullAddress();
+        String permAddress = fakerRu.address().fullAddress();
 
 
-    @Test
-    void successfulFillFormWithoutAddressTest() {
-
-        open("/text-box");
-        $("[id=userName]").setValue(userName);
-        $("[id=userEmail]").setValue(usEmail);
-        $("[id=submit]").click();
-
-        $("[id=output] [id=name]").shouldHave(text(userName));
-        $("[id=output] [id=email]").shouldHave(text(usEmail));
-        }
+        textBoxPage.openPage()
+                .typeUserName(userName)
+                .typeUsEmail(usEmail)
+                .typeCurAddress(curAddress)
+                .typePermAddress(permAddress)
+                .submitForm()
+                .checkField("name", userName)
+                .checkField("email", usEmail)
+                .checkField("currentAddress", curAddress)
+                .checkField("permanentAddress", permAddress);
     }
+
+}
