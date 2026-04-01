@@ -1,12 +1,12 @@
 package tests;
 
 import com.github.javafaker.Faker;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
 
 import java.util.Locale;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static testdata.testData.*;
 import static utils.RandomUtils.getRandomEmail;
@@ -30,7 +30,7 @@ public class TextBoxTests extends TestBase {
                 .checkField("email", usEmail)
                 .checkField("currentAddress", curAddress)
                 .checkField("permanentAddress", permAddress);
-        }
+    }
 
 
     @Test
@@ -42,7 +42,7 @@ public class TextBoxTests extends TestBase {
                 .submitForm()
                 .checkField("name", userName)
                 .checkField("email", usEmail);
-        }
+    }
 
     @Test
     void successfulFillFormTest_with_faker() {
@@ -65,10 +65,6 @@ public class TextBoxTests extends TestBase {
                 .checkField("currentAddress", curAddressF)
                 .checkField("permanentAddress", permAddressF);
 
-        textBoxPage.checkField("name", userNameF);
-        textBoxPage.checkField("email", usEmailF);
-        $("[id=output] [id=currentAddress]").shouldHave(text(curAddressF));
-        $("[id=output] [id=permanentAddress]").shouldHave(text(permAddressF));
     }
 
     @Test
@@ -78,52 +74,47 @@ public class TextBoxTests extends TestBase {
         String curAddressU = getRandomString(100);
         String permAddressU = getRandomString(90);
 
-        textBoxPage.openPage();
-        textBoxPage.typeUserName(userNameU);
-        textBoxPage.typeUsEmail(usEmailU);
-        $("[id=currentAddress]").setValue(curAddressU);
-        $("[id=permanentAddress]").setValue(permAddressU);
-        textBoxPage.submitForm();
+        textBoxPage.openPage()
+                .typeUserName(userNameU)
+                .typeUsEmail(usEmailU)
+                .typeCurAddress(curAddressU)
+                .typePermAddress(permAddressU)
+                .submitForm()
+                .checkField("name", userNameU)
+                .checkField("email", usEmailU)
+                .checkField("currentAddress", curAddressU)
+                .checkField("permanentAddress", permAddressU);
 
-        textBoxPage.checkField("name", userNameU);
-        textBoxPage.checkField("email", usEmailU);
-        $("[id=output] [id=currentAddress]").shouldHave(text(curAddressU));
-        $("[id=output] [id=permanentAddress]").shouldHave(text(permAddressU));
     }
 
-    String userNameU;
-    String userEmailU;
-    String currentAddressU;
-    String permanentAddressU;
+
+    String userNameEach;
+    String usEmailEach;
+    String curAddressEach;
+    String permAddressEach;
+
+    @BeforeEach
+    void prepareRandomData() {
+        userNameEach = getRandomString(10);
+        usEmailEach = getRandomEmail();
+        curAddressEach = getRandomString(100);
+        permAddressEach = getRandomString(80);
     }
 
-//
-//@Test
-//void successfulFillFormTest_with_utils_with_before_each() {
-//    textBoxPage.openPage();
-//    textBoxPage.typeUserName(userNameU);
-//    textBoxPage.typeUserEmail(userEmailU);
-//    $("[id=currentAddress]").setValue(currentAddressU);
-//    $("[id=permanentAddress]").setValue(permanentAddressU);
-//    textBoxPage.submitForm();
-//
-//    textBoxPage.checkField("name", userNameU);
-//    textBoxPage.checkField("email", userEmailU);
-//    $("[id=output] [id=currentAddress]").shouldHave(text(currentAddressU));
-//    $("[id=output] [id=permanentAddress]").shouldHave(text(permanentAddressU));
-//}
-//
-//
-//@Test
-//void successfulFillFormWithoutAddressTest_old() {
-//    open("/text-box");
-//    $("[id=userName]").setValue(userName);
-//    $("[id=userEmail]").setValue(userEmail);
-//    $("[id=submit]").click();
-//
-//    $("[id=output] [id=name]").shouldHave(text(userName));
-//    $("[id=output] [id=email]").shouldHave(text(userEmail));
-//}
-//
+    @Test
+    void successfulFillFormTest_with_utils_with_before_each() {
+        textBoxPage.openPage()
+                .typeUserName(userNameEach)
+                .typeUsEmail(usEmailEach)
+                .typeCurAddress(curAddressEach)
+                .typePermAddress(permAddressEach)
+                .submitForm()
+                .checkField("name", userNameEach)
+                .checkField("email", usEmailEach)
+                .checkField("currentAddress", curAddressEach)
+                .checkField("permanentAddress", permAddressEach);
+    }
+}
+
 
 
