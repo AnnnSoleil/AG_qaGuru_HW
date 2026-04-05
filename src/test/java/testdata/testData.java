@@ -6,7 +6,6 @@ public class testData {
     public static String usEmail = "alex@black.com";
     public static String curAddress = "first address 1";
     public static String permAddress = "second address 2";
-
     public static String formUrl = "/automation-practice-form";
     public static String modalWinTest = "Thanks for submitting the form";
     public static String firstName = "Ivan";

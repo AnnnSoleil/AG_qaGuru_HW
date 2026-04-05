@@ -7,7 +7,7 @@ import pages.components.RegResultsComponents;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static testdata.testData.*;
+import static testdata.testData.formUrl;
 
 public class DemoqaRegFormTestPage {
     CalendarComponent calendar = new CalendarComponent();
