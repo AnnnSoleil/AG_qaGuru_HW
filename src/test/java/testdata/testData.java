@@ -1,12 +1,17 @@
 package testdata;
 
+import static utils.RandomUtils.*;
+import static utils.RandomUtils.getRandomInt;
+import static utils.RandomUtils.getRandomItemFromStringArray;
+import static utils.RandomUtils.getRandomPhone;
+import static utils.RandomUtils.getRandomString;
+
 public class testData {
 
     public static String userName = "Alex Black";
     public static String usEmail = "alex@black.com";
     public static String curAddress = "first address 1";
     public static String permAddress = "second address 2";
-
     public static String formUrl = "/automation-practice-form";
     public static String modalWinTest = "Thanks for submitting the form";
     public static String firstName = "Ivan";
@@ -27,6 +32,5 @@ public class testData {
     public static String currentAddress = "Novaya street 100";
     public static String state = "Haryana";
     public static String stateCity = "Karnal";
-
 }
 
