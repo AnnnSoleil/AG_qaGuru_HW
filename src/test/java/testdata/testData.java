@@ -1,5 +1,11 @@
 package testdata;
 
+import static utils.RandomUtils.*;
+import static utils.RandomUtils.getRandomInt;
+import static utils.RandomUtils.getRandomItemFromStringArray;
+import static utils.RandomUtils.getRandomPhone;
+import static utils.RandomUtils.getRandomString;
+
 public class testData {
 
     public static String userName = "Alex Black";
@@ -26,6 +32,5 @@ public class testData {
     public static String currentAddress = "Novaya street 100";
     public static String state = "Haryana";
     public static String stateCity = "Karnal";
-
 }
 
