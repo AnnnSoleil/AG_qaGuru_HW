@@ -3,12 +3,12 @@ package tests;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import pages.DemoqaRegFormTestPage;
 import testdata.testDataU;
 
-import static testdata.testData.state;
-import static testdata.testData.stateCity;
+import java.util.stream.Stream;
 
 public class DemoqaRegFormParamTest extends TestBase {
     testDataU data;
@@ -42,7 +42,7 @@ public class DemoqaRegFormParamTest extends TestBase {
     }
 
     @ParameterizedTest(name = "Проверка регистрации State/City: {0} / {1}")
-    @CsvSource ({
+    @CsvSource({
             "NCR, Delhi",
             "NCR, Gurgaon",
             "NCR, Noida",
@@ -54,7 +54,6 @@ public class DemoqaRegFormParamTest extends TestBase {
             "Rajasthan, Jaipur",
             "Rajasthan, Jaiselmer"
     })
-
     void stateCityParameterizedTest(String stateP, String stateCityP) {
         successFillRequiredFields();
         demoqaRegFormTestPage
@@ -63,5 +62,23 @@ public class DemoqaRegFormParamTest extends TestBase {
                 .checkFormField("State and City", stateP + " " + stateCityP);
     }
 
+    @ParameterizedTest(name = "Проверка предмета: {0}")
+    @MethodSource("subjectProvider")
+    void subjectParameterizedTest(String subjectP) {
+        successFillRequiredFields();
+        demoqaRegFormTestPage
+                .setSubject(subjectP)
+                .submitRegForm()
+                .checkFormField("Subjects", subjectP);
+    }
 
+    static Stream<String> subjectProvider() {
+        return Stream.of(
+                "Maths",
+                "Physics",
+                "English",
+                "Computer Science",
+                "Biology"
+        );
+    }
 }
