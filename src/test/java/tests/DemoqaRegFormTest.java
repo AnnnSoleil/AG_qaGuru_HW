@@ -79,3 +79,4 @@ public class DemoqaRegFormTest extends TestBase {
 
     }
 }
+

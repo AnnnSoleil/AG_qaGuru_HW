@@ -11,7 +11,7 @@ public class testDataU {
             lastNameU = getRandomString(10),
             userEmailU = getRandomEmail(),
             genderU = getRandomGender(),
-            userNumberU = getRandomPhone(),
+            userNumberU = String.valueOf(getRandomInt(1000000000, 1999999999)),
             dayForSelectorU = String.format("%03d", getRandomInt(1,28)),
             monthU = getRandomItemFromStringArray(new String[]{
                     "January", "February", "March", "April", "May", "June",
