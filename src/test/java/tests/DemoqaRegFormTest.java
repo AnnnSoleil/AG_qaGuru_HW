@@ -2,7 +2,7 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pages.DemoqaRegFormTestPage;
-import testdata.testDataU;
+import testdata.TestDataU;
 
 import static testdata.testData.*;
 
@@ -41,24 +41,10 @@ public class DemoqaRegFormTest extends TestBase {
                 .checkFormField("State and City", state + " " + stateCity);
     }
 
-    String firstNameU;
-    String lastNameU;
-    String userEmailU;
-    String genderU;
-    String userNumberU;
-    String dayForSelectorU;
-    String monthU;
-    String yearU;
-    String subjectU;
-    String hobbyU;
-    String currentAddressU;
-    String stateU;
-    String stateCityU;
-
 
     @Test
-    void successfulFill_DMQ_Test_with_utils_testDataU() {
-        testDataU data = new testDataU();
+    void successfulFillDmqTestWithTestData() {
+        TestDataU data = new TestDataU();
 
         demoqaRegFormTestPage
                 .openPage()
