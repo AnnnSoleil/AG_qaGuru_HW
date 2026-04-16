@@ -6,7 +6,7 @@ import static utils.RandomUtils.getRandomItemFromStringArray;
 import static utils.RandomUtils.getRandomPhone;
 import static utils.RandomUtils.getRandomString;
 
-public class testDataU {
+public class TestDataU {
     public String firstNameU = getRandomString(10),
             lastNameU = getRandomString(10),
             userEmailU = getRandomEmail(),
