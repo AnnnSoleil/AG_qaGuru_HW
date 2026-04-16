@@ -6,17 +6,17 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import pages.DemoqaRegFormTestPage;
-import testdata.testDataU;
+import testdata.TestDataU;
 
 import java.util.stream.Stream;
 
 public class DemoqaRegFormParamTest extends TestBase {
-    testDataU data;
+    TestDataU data;
     DemoqaRegFormTestPage demoqaRegFormTestPage = new DemoqaRegFormTestPage();
 
     @BeforeEach
     void prepareData() {
-        data = new testDataU();
+        data = new TestDataU();
     }
 
     private void successFillRequiredFields() {
