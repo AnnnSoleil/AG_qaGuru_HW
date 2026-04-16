@@ -2,7 +2,7 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pages.DemoqaRegFormTestPage;
-
+import testdata.TestDataU;
 
 import static testdata.testData.*;
 
@@ -39,7 +39,29 @@ public class DemoqaRegFormTest extends TestBase {
                 .checkFormField("Picture", img)
                 .checkFormField("Address", currentAddress)
                 .checkFormField("State and City", state + " " + stateCity);
+    }
 
+
+    @Test
+    void successfulFillDmqTestWithTestData() {
+        TestDataU data = new TestDataU();
+
+        demoqaRegFormTestPage
+                .openPage()
+                .banerRemover()
+                .formHavText("Student Registration Form")
+                .typeFirstName(data.firstNameU)
+                .typeLastName(data.lastNameU)
+                .typeUserEmail(data.userEmailU)
+                .setGender(data.genderU)
+                .typeUserNumber(data.userNumberU)
+                .setDateOfBirth(data.dayForSelectorU, data.monthU, data.yearU)
+                .setSubject(data.subjectU)
+                .setHobby(data.hobbyU)
+                .uploadPicture(imgPath + img)
+                .currentAddress(data.currentAddressU)
+                .setStateAndCity(data.stateU, data.stateCityU)
+                .submitRegForm();
 
     }
 }
