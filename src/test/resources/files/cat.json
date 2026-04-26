@@ -1,0 +1,10 @@
+{
+  "object": "Cat",
+  "name": "Musya",
+  "age": 2,
+  "skills": ["jump", "eat", "play"],
+  "address": {
+    "city": "Moscow",
+    "zip": "123456"
+  }
+}
