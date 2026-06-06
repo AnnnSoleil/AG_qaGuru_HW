@@ -12,6 +12,7 @@ allure {
     }
     adapter {
         aspectjWeaver.set(true)
+        resultsDir.set(file("allure-results"))
         frameworks {
             junit5 {
                 adapterVersion.set("2.19.0") //версия интеграции фреймворка и Allure
