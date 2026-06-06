@@ -9,6 +9,7 @@ import static com.codeborne.selenide.Selenide.webdriver;
 import static io.qameta.allure.Allure.attachment;
 import static io.qameta.allure.Allure.step;
 
+
 public class AttachSelenideTest {
     @Test
     public void testLambdaStep() {
@@ -20,11 +21,14 @@ public class AttachSelenideTest {
         });
     }
 
-//    @Test
- //   public void testAnnotateAttachments(){
-   //     SelenideLogger.addListener("allure", new AllureSelenide());
-     //   WebSteps steps = new WebSteps;
-   // }
+    @Test
+    public void testAnnotateAttachments(){
+        SelenideLogger.addListener("allure", new AllureSelenide());
+        WebSteps steps = new WebSteps();
+
+        steps.openMainPage();
+        steps.takeScreenshot();
+    }
 
 
 
